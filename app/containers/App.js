@@ -3,11 +3,6 @@ import { makeRequest, OW_URL } from '../utils';
 import { getInitialState } from '../model';
 
 export default class App extends Component {
-	static propTypes = {
-	};
-	static defaultProps = {
-
-	};
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -29,6 +24,11 @@ export default class App extends Component {
 			days: data
 		});
 	}
+	prettifyLocation(location) {
+		const arr = location.split(',');
+		arr[1] = arr[1].toUpperCase();
+		return arr.join(', ');
+}
 	renderDayCard(day, i) {
 		const { days } = this.state;
 		const currentDay = days[day];
@@ -62,7 +62,7 @@ export default class App extends Component {
 		const { days, location } = this.state;
 		return days ?
 			(<div>
-				<h1 className='h1'>{`5 day forecast for ${location.split(',').join(', ')}`}</h1>
+				<h1 className='h1'>{`5 day forecast for ${::this.prettifyLocation(location)}`}</h1>
 				<ul className='row'>{ ::this.renderDays() }</ul>
 			</div>) :
 			(<p>Fetching weather data, one moment please...</p>);
