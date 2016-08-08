@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { makeRequest, OW_URL } from '../utils';
 import { getInitialState } from '../model';
+import { DayCard } from '../components';
 
 export default class App extends Component {
 	constructor(props) {
@@ -32,26 +33,8 @@ export default class App extends Component {
 	renderDayCard(day, i) {
 		const { days } = this.state;
 		const currentDay = days[day];
-		console.log('DAY', day)
 		return (
-			<li key={i} className='col-xs-4 col-sm-2 card-day brand-primary'>
-				<dl>
-					<dt>
-						<span className='dna-invisible'>Date</span>
-					</dt>
-					<dt>{currentDay.date.join(' ')}</dt>
-					<dt>Lo:</dt>
-					<dd>{currentDay.lo} &deg;C</dd>
-					<dt>Hi:</dt>
-					<dd>{currentDay.hi} &deg;C</dd>
-					<dt><span className='dna-invisible'>Description</span></dt>
-					<dd>{currentDay.desc}</dd>
-					<dt className='dna-invisible' aria-hidden='true'>Weather icon</dt>
-					<dd>
-						<i className={`wi wi-owm-${currentDay.icon}`}> </i>
-					</dd>
-				</dl>
-			</li>
+			<DayCard currentDay={currentDay} index={i} />
 		);
 	}
 	renderDays() {
