@@ -30,6 +30,7 @@ gulp.task('default', function( callback ) {
 		],
 		[
 			'copy:package-bundles',
+			'copy:package-fonts',
 			'copy:html',
 		],
 		[
@@ -97,13 +98,22 @@ gulp.task('copy:html', function() {
 gulp.task('copy:package-bundles', function() {
 	return gulp.src([
 		'./package/global.min.css',
+		'./package/weather-icons.min.css',
 		'./package/global.min.css.map',
 		'./package/global.min.js',
 		'./package/global.min.js.map',
+		'./bower_components/bootstrap/dist/css/bootstrap.min.css',
+		'./bower_components/bootstrap/dist/css/bootstrap.min.css.map'
 	])
 		.pipe(gulp.dest('./build/package/'));
 });
 
+gulp.task('copy:package-fonts', function() {
+	return gulp.src([
+			'./package/font/weathericons-regular-webfont.*',
+		])
+		.pipe(gulp.dest('./build/font/'));
+});
 
 
 //++++++++++++++++++++++

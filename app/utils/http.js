@@ -1,3 +1,5 @@
+import { CONFIG } from '../config/config';
+
 /**
  * HTTP request Fetch API utils module
  * @module: utils/http
@@ -41,7 +43,7 @@ export const parseJSON = response => {
  * @param {Number} deadline - Fetch request timeout deadline
  * @returns {object} request promise stream [thenable]
  */
-export const makeRequest = (url, action, options, deadline) => {
+export const makeRequest = (url, action, options, deadline = CONFIG.REQUEST_DEADLINE_DEFAULT) => {
 	action && action();
 	const timeout = new Error('Request timeout');
 	timeout.response = new Response(JSON.stringify({}), {
@@ -58,3 +60,5 @@ export const makeRequest = (url, action, options, deadline) => {
 		.then(verifyStatus)
 		.then(parseJSON);
 };
+
+export const OW_URL = `${CONFIG.OW_BASE_URL}?mode=${CONFIG.OW_MODE}&units=${CONFIG.OW_UNITS}&appid=${CONFIG.OW_API_KEY}&q=`;

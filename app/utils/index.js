@@ -1,2 +1,1 @@
-export { WeatherModel, getInitialState } from './model';
-export { makeRequest } from './http';
+export { makeRequest, OW_URL } from './http';
