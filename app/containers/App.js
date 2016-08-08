@@ -34,7 +34,7 @@ export default class App extends Component {
 		const { days } = this.state;
 		const currentDay = days[day];
 		return (
-			<DayCard currentDay={currentDay} index={i} />
+			<DayCard currentDay={currentDay} key={i} />
 		);
 	}
 	renderDays() {

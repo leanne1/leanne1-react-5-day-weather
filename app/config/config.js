@@ -3,5 +3,5 @@ export const CONFIG = {
 	OW_UNITS: 'metric',
 	OW_MODE: 'json',
 	OW_BASE_URL: 'http://api.openweathermap.org/data/2.5/forecast',
-	REQUEST_DEADLINE_DEFAULT: 1000,
+	REQUEST_DEADLINE_DEFAULT: 10000,
 };

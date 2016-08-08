@@ -2,17 +2,14 @@ import React, { Component, PropTypes } from 'react';
 
 export default class DayCard extends Component {
 	static propTypes = {
-		currentDay: PropTypes.string.isRequired,
-		index: PropTypes.number.isRequired,
+		currentDay: PropTypes.object.isRequired,
 	};
 	render() {
 		const {
 			currentDay,
-			index
 		} = this.props;
-
 		return (
-			<li key={index} className='col-xs-4 col-sm-2 card-day brand-primary'>
+			<li className='col-xs-4 col-sm-2 card-day brand-primary'>
 				<dl>
 					<dt>
 						<span className='dna-invisible'>Date</span>

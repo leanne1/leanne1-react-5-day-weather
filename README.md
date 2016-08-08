@@ -12,6 +12,7 @@
 - Use Redux to handle state to allow scaling the app
 - Unit tests
 - Remove gulp and replace with a webpack / npm solution
+- Handle errors (HTTP request errors etc.)
 
 ## UI / UX
 - The algorithm for calculating which description and icon to show doesn't take into account whether
