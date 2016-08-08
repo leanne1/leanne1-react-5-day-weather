@@ -16,7 +16,9 @@ export default class App extends Component {
 	fetchData() {
 		const { location } = this.state;
 		const url = `${OW_URL}${location}`;
-		makeRequest(url)
+		makeRequest(url, function(){}, {
+			mode: 'cors'
+		})
 			.then(getInitialState)
 			.then(::this.updateWeather);
 	}

@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 
-process.env.BABEL_ENV = 'webpack:dev';
+const TARGET = process.env.npm_lifecycle_event;
 
 const common = {
 	entry: {
@@ -44,4 +44,16 @@ const common = {
 	],
 };
 
-module.exports = common;
+// DEV CONFIG
+if(TARGET !== 'build') {
+	module.exports = common;
+}
+
+// PROD CONFIG
+if(TARGET === 'build' || TARGET === 'publish' ) {
+	module.exports = merge(common, {
+		watch: false,
+	});
+}
+
+

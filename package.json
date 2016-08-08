@@ -4,9 +4,11 @@
   "description": "React app that renders a 5-day forecast for a specified location",
   "main": "app/index.js",
   "scripts": {
-    "start": "gulp",
+    "start": "BABEL_ENV=webpack:dev gulp",
     "test": "gulp test",
-    "webpack": "webpack-dev-server --hot --inline"
+    "webpack": "webpack-dev-server --hot --inline",
+    "build": "NODE_ENV=production BABEL_ENV=build gulp build",
+    "publish": "gulp publish"
   },
   "repository": {
     "type": "git",
@@ -48,6 +50,7 @@
     "gulp-csslint": "^0.1.5",
     "gulp-eslint": "^1.1.0",
     "gulp-flatten": "^0.2.0",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-htmlhint": "^0.3.0",
     "gulp-less": "^3.0.5",
     "gulp-less-reporter": "0.0.2",
@@ -58,6 +61,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-todo": "^3.3.0",
     "gulp-util": "^3.0.6",
+    "gulp-webpack": "^1.5.0",
     "karma": "^0.13.22",
     "karma-browserify": "^4.4.0",
     "karma-mocha": "^0.2.1",

@@ -6,19 +6,25 @@
 - Run `gulp` and `npm run webpack` (in separate tabs)
 - Open the browser at `http://0.0.0.0:8824/`
 - Run up tests with `gulp test`
+- To build for deployment: `npm run build`
+- To deploy to Github pages: `npm run pubslih`
 
-## Code
+
+## TODO
+
+### Code
 - Convert `WeatherModel` into a non-destructive functional pipeline instead of a class - with no data mutating
 - Use Redux to handle state to allow scaling the app
 - Unit tests
-- Remove gulp and replace with a webpack / npm solution
+- Remove gulp and replace with a webpack / npm solution; minify
 - Handle errors (HTTP request errors etc.)
 
-## UI / UX
+
+### UI / UX
 - The algorithm for calculating which description and icon to show doesn't take into account whether
 the time segment is day or night, so night time icons may get shown in the day
 
-## Features
+### Features
 - •C / •F toggle
 - Weather by 3-hourly period (or hourly with additional API call)
 - Select lists to change location

@@ -17,6 +17,8 @@ var flatten = require('gulp-flatten');
 var replace = require('gulp-replace');
 var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
+var ghPages = require('gulp-gh-pages');
+var gulpWebpack = require('gulp-webpack');
 
 //++++++++++++++++++++++++
 // + CLI tasks [public]
@@ -42,6 +44,35 @@ gulp.task('default', function( callback ) {
 			'test',
 		]
 		, callback);
+});
+
+gulp.task('build', function( callback ) {
+	runSequence(
+		['clean:build'],
+		[
+			'copy:package-bundles',
+			'copy:package-fonts',
+			'copy:html',
+			'modules:site-less',
+			'modules:site-js'
+		]
+		, callback)
+});
+
+gulp.task('publish', function( callback ) {
+	runSequence(
+		['build'],
+		['publish:deploy']
+		, callback)
+});
+
+//++++++++++++++++++++++
+// + Publish
+//++++++++++++++++++++++
+
+gulp.task('publish:deploy', function() {
+	return gulp.src('./build/**/*')
+		.pipe(ghPages());
 });
 
 //++++++++++++++++++++++
@@ -115,6 +146,15 @@ gulp.task('copy:package-fonts', function() {
 		.pipe(gulp.dest('./build/font/'));
 });
 
+//++++++++++++++++++++++
+// + Javascript
+//++++++++++++++++++++++
+gulp.task('modules:site-js', function() {
+	var webpackConfig = require('./webpack.config.js');
+	return gulp.src('./app/index.js')
+		.pipe(gulpWebpack(webpackConfig))
+		.pipe(gulp.dest('./build/js/'));
+});
 
 //++++++++++++++++++++++
 // + Clean
