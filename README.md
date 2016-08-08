@@ -14,7 +14,7 @@
 - Remove gulp and replace with a webpack / npm solution
 
 ## UI / UX
-- The algorithm for calculating which description and icon to show does'nt take into account whether
+- The algorithm for calculating which description and icon to show doesn't take into account whether
 the time segment is day or night, so night time icons may get shown in the day
 
 ## Features
