@@ -1,0 +1,9 @@
+App id:
+88a152c22a30ff29fe4974b967abf7a9
+
+http://api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID=88a152c22a30ff29fe4974b967abf7a9
+
+
+WEATHER ICONS:
+https://github.com/erikflowers/weather-icons
+The weather API returns an id # in weather which corresponds to the number in the icon class (more or less!)
