@@ -20838,7 +20838,9 @@
 				var location = this.state.location;
 	
 				var url = '' + _utils.OW_URL + location;
-				(0, _utils.makeRequest)(url).then(_model.getInitialState).then(this.updateWeather.bind(this));
+				(0, _utils.makeRequest)(url, function () {}, {
+					mode: 'cors'
+				}).then(_model.getInitialState).then(this.updateWeather.bind(this));
 			}
 		}, {
 			key: 'updateWeather',
