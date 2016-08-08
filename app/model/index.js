@@ -1,1 +1,0 @@
-export { getInitialState } from './model';

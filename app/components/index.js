@@ -1,1 +1,0 @@
-export DayCard from './Cards/DayCard';
