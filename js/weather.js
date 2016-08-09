@@ -20801,9 +20801,9 @@
 	
 	var _utils = __webpack_require__(170);
 	
-	var _model = __webpack_require__(173);
+	var _model = __webpack_require__(174);
 	
-	var _components = __webpack_require__(175);
+	var _components = __webpack_require__(176);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -20838,9 +20838,7 @@
 				var location = this.state.location;
 	
 				var url = '' + _utils.OW_URL + location;
-				(0, _utils.makeRequest)(url, function () {}, {
-					mode: 'cors'
-				}).then(_model.getInitialState).then(this.updateWeather.bind(this));
+				(0, _utils.makeRequest)(url).then(_model.getInitialState).then(this.updateWeather.bind(this));
 			}
 		}, {
 			key: 'updateWeather',
@@ -20848,13 +20846,6 @@
 				this.setState({
 					days: data
 				});
-			}
-		}, {
-			key: 'prettifyLocation',
-			value: function prettifyLocation(location) {
-				var arr = location.split(',');
-				arr[1] = arr[1].toUpperCase();
-				return arr.join(', ');
 			}
 		}, {
 			key: 'renderDayCard',
@@ -20878,23 +20869,12 @@
 		}, {
 			key: 'renderView',
 			value: function renderView() {
-				var _state = this.state;
-				var days = _state.days;
-				var location = _state.location;
+				var days = this.state.days;
 	
 				return days ? _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						'h1',
-						{ className: 'h1' },
-						'5 day forecast for ' + this.prettifyLocation.call(this, location)
-					),
-					_react2.default.createElement(
-						'ul',
-						{ className: 'row' },
-						this.renderDays.call(this)
-					)
+					'ul',
+					{ className: 'row' },
+					this.renderDays.call(this)
 				) : _react2.default.createElement(
 					'p',
 					null,
@@ -20904,9 +20884,16 @@
 		}, {
 			key: 'render',
 			value: function render() {
+				var location = this.state.location;
+	
 				return _react2.default.createElement(
 					'section',
 					{ className: 'container-fluid' },
+					_react2.default.createElement(
+						'h1',
+						{ className: 'h1' },
+						'5 day forecast for ' + (0, _utils.prettifyLocationString)(location)
+					),
 					this.renderView.call(this)
 				);
 			}
@@ -20939,6 +20926,15 @@
 	  enumerable: true,
 	  get: function get() {
 	    return _http.OW_URL;
+	  }
+	});
+	
+	var _string = __webpack_require__(173);
+	
+	Object.defineProperty(exports, 'prettifyLocationString', {
+	  enumerable: true,
+	  get: function get() {
+	    return _string.prettifyLocationString;
 	  }
 	});
 
@@ -21036,6 +21032,21 @@
 
 /***/ },
 /* 173 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var prettifyLocationString = exports.prettifyLocationString = function prettifyLocationString(location) {
+		var arr = location.split(',');
+		arr[1] = arr[1].toUpperCase();
+		return arr.join(', ');
+	};
+
+/***/ },
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21044,7 +21055,7 @@
 	  value: true
 	});
 	
-	var _model = __webpack_require__(174);
+	var _model = __webpack_require__(175);
 	
 	Object.defineProperty(exports, 'getInitialState', {
 	  enumerable: true,
@@ -21054,7 +21065,7 @@
 	});
 
 /***/ },
-/* 174 */
+/* 175 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21079,11 +21090,11 @@
 			this.data = options.data;
 			this.normalized = null;
 			this.groupedByDay = null;
-			this.lo = this.null;
-			this.hi = this.null;
-			this.icon = this.null;
-			this.desc = this.null;
-			this.date = this.null;
+			this.lo = null;
+			this.hi = null;
+			this.icon = null;
+			this.desc = null;
+			this.date = null;
 	
 			this.getters = {
 				lo: 'getLoForDay',
@@ -21241,7 +21252,7 @@
 	};
 
 /***/ },
-/* 175 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21251,7 +21262,7 @@
 	});
 	exports.DayCard = undefined;
 	
-	var _DayCard2 = __webpack_require__(176);
+	var _DayCard2 = __webpack_require__(177);
 	
 	var _DayCard3 = _interopRequireDefault(_DayCard2);
 	
@@ -21260,7 +21271,7 @@
 	exports.DayCard = _DayCard3.default;
 
 /***/ },
-/* 176 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21302,7 +21313,7 @@
 	
 				return _react2.default.createElement(
 					'li',
-					{ className: 'col-xs-4 col-sm-2 card-day brand-primary' },
+					{ className: 'col-xs-4 col-sm-2 card-day' },
 					_react2.default.createElement(
 						'dl',
 						null,
@@ -21363,7 +21374,7 @@
 						),
 						_react2.default.createElement(
 							'dd',
-							null,
+							{ 'aria-hidden': 'true' },
 							_react2.default.createElement(
 								'i',
 								{ className: 'wi wi-owm-' + currentDay.icon },
