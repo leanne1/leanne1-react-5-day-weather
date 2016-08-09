@@ -6,11 +6,11 @@ export class WeatherModel {
 		this.data = options.data;
 		this.normalized = null;
 		this.groupedByDay = null;
-		this.lo = this.null;
-		this.hi = this.null;
-		this.icon = this.null;
-		this.desc = this.null;
-		this.date = this.null;
+		this.lo = null;
+		this.hi = null;
+		this.icon = null;
+		this.desc = null;
+		this.date = null;
 
 		this.getters = {
 			lo: 'getLoForDay',

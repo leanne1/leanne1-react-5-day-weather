@@ -9,7 +9,7 @@ export default class DayCard extends Component {
 			currentDay,
 		} = this.props;
 		return (
-			<li className='col-xs-4 col-sm-2 card-day brand-primary'>
+			<li className='col-xs-4 col-sm-2 card-day'>
 				<dl>
 					<dt>
 						<span className='dna-invisible'>Date</span>
@@ -19,10 +19,12 @@ export default class DayCard extends Component {
 					<dd>{currentDay.lo} &deg;C</dd>
 					<dt>Hi:</dt>
 					<dd>{currentDay.hi} &deg;C</dd>
-					<dt><span className='dna-invisible'>Description</span></dt>
+					<dt>
+						<span className='dna-invisible'>Description</span>
+					</dt>
 					<dd>{currentDay.desc}</dd>
 					<dt className='dna-invisible' aria-hidden='true'>Weather icon</dt>
-					<dd>
+					<dd aria-hidden='true'>
 						<i className={`wi wi-owm-${currentDay.icon}`}> </i>
 					</dd>
 				</dl>

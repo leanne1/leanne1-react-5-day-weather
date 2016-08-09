@@ -1,0 +1,16 @@
+# Note: This file is a *read-only* domain-wide setting
+# To update this file, edit and release the source file
+# in justgiving-tools
+
+# http://editorconfig.org
+
+root = true
+
+[*]
+charset = utf-8
+indent_style = tab
+indent_size = 4
+end_of_line = lf
+insert_final_newline = true
+max_line_length = 80
+trim_trailing_whitespace = true

@@ -16,13 +16,4 @@ npm-debug.log
 # Test
 coverage/
 
-# Read-only config files
-.editorconfig
-.jscsrc
-.jshintrc
-.jshintrc-angular
-browserslist
-csslintrc.json
-htmlhintrc.json
-
 # Redundant files
