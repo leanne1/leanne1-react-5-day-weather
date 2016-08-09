@@ -7,7 +7,7 @@
 - Open the browser at `http://0.0.0.0:8824/`
 - Run up tests with `gulp test`
 - To build for deployment: `npm run build`
-- To deploy to Github pages: `npm run pubslih`
+- To deploy to Github pages: `npm run publish` (Note: this was not used as the deployed solution due to CORS errors)
 
 
 ## TODO
